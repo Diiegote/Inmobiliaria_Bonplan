@@ -5,8 +5,10 @@ CREATE TABLE "User" (
     "name" TEXT NOT NULL,
     "lastname" TEXT NOT NULL,
     "password" TEXT NOT NULL,
-    "superuser" TEXT NOT NULL,
+    "superuser" BOOLEAN NOT NULL DEFAULT false,
     "phone" TEXT NOT NULL,
+    "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "User_pkey" PRIMARY KEY ("id")
 );
@@ -20,6 +22,8 @@ CREATE TABLE "Contract" (
     "date_start" TIMESTAMP(3) NOT NULL,
     "date_end" TIMESTAMP(3) NOT NULL,
     "propertyId" INTEGER,
+    "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "Contract_pkey" PRIMARY KEY ("id")
 );
@@ -35,12 +39,14 @@ CREATE TABLE "Property" (
     "antiquity" INTEGER NOT NULL,
     "price_rent" DOUBLE PRECISION NOT NULL,
     "price_sell" DOUBLE PRECISION NOT NULL,
-    "description" TEXT NOT NULL,
+    "description" VARCHAR(255) NOT NULL,
     "bathroom" INTEGER NOT NULL,
     "room" INTEGER NOT NULL,
     "address" TEXT NOT NULL,
     "name_owner" TEXT NOT NULL,
     "number_owner" TEXT NOT NULL,
+    "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
     "cityId" INTEGER,
 
     CONSTRAINT "Property_pkey" PRIMARY KEY ("id")
