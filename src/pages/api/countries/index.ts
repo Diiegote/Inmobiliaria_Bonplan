@@ -16,6 +16,9 @@ export default async function index(req: NextApiRequest,res: NextApiResponse) {
             }
         })
     })
+
+
+    
     res.status(200).json("Listo")
     /* const user = await prisma.user.findMany()
     res.status(200).json(user) */
