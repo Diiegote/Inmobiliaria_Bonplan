@@ -4,7 +4,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url      = "postgresql://alexis:Aa.040292@localhost/inmobiliaria_bonpland?schema=public"
 }
 
 model User {
