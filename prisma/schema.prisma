@@ -8,14 +8,16 @@ datasource db {
 }
 
 model User {
-  id        Int        @id @default(autoincrement())
-  email     String     @unique
-  name      String
-  lastname  String
-  password  String
-  superuser Boolean
-  phone     String
-  contracts Contract[]
+  id         Int        @id @default(autoincrement())
+  email      String     @unique
+  name       String
+  lastname   String
+  password   String
+  superuser  Boolean    @default(false)
+  phone      String
+  created_at DateTime   @default(now())
+  updatedAt  DateTime   @updatedAt
+  contracts  Contract[]
 }
 
 model Contract {
@@ -28,6 +30,8 @@ model Contract {
   date_end       DateTime
   Property       Property? @relation(fields: [propertyId], references: [id])
   propertyId     Int?
+  created_at     DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
 }
 
 model Property {
@@ -40,12 +44,14 @@ model Property {
   antiquity      Int
   price_rent     Float
   price_sell     Float
-  description    String
+  description    String     @db.VarChar(255)
   bathroom       Int
   room           Int
   address        String
   name_owner     String
   number_owner   String
+  created_at     DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
   contract       Contract[]
 
   City   City? @relation(fields: [cityId], references: [id])
