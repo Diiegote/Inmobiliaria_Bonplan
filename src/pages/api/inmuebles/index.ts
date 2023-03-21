@@ -1,0 +1,40 @@
+import type { NextApiRequest, NextApiResponse } from 'next'
+import { PrismaClient } from '@prisma/client'
+
+const prisma = new PrismaClient({ log: ['query', 'info'] })
+
+const json1 = {
+   id:1,
+   imagen: "",
+   m2: 30,
+   type_contract: 2,
+   type_propery: 1,
+   state_contract: 1,
+   antiquity: 30,
+   price_rent: 40.000,
+   price_sell: 500000000,
+   description: "Casa totalemte amueblada, con vista al mar",
+   bathroom: 2,
+   room: 5,
+   address: "posadas 465",
+   name_owner: "Jose Perez",
+   number_owner: "2364445455",
+}
+
+export default async function inmuebles(req: NextApiRequest, res: NextApiResponse) {
+   const { method } = req
+   try {
+      switch (method) {
+         case "GET":
+            return res.json(json1);
+
+         case "POST":
+            return res.json({ messge: "Inmueble creado" })
+
+         default:
+            res.status(400).json({ messge: "No se encontro la ruta" })
+      }
+   } catch (error) {
+      console.log(error)
+   }
+}
