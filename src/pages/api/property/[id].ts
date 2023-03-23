@@ -4,7 +4,7 @@ import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient({ log: ['query', 'info'] })
 
 const json1 = [{
-   id:1,
+   id: 1,
    imagen: "sdfsdf",
    m2: 30,
    type_contract: 2,
@@ -21,7 +21,7 @@ const json1 = [{
    number_owner: "2364445455",
 },
 {
-   id:2,
+   id: 2,
    imagen: "sfdfsdf",
    m2: 30,
    type_contract: 2,
@@ -41,12 +41,15 @@ const json1 = [{
 ]
 
 export default async function inmuebles(req: NextApiRequest, res: NextApiResponse) {
-   const { method,query} = req
+   const { method, query } = req
    try {
       switch (method) {
          case "GET":
-            return res.json(json1.filter(x => x.id === parseInt(query.id)));
-               
+            const results = json1.filter(x => x?.id === Number(query.id))
+            return res.json(
+               results[0]?.id ? results
+                  : res.status(400).json({ mesaage: "No se encontro el id" }));
+
          case "PUT":
             return res.json({ messge: "Inmueble Editado" })
 
