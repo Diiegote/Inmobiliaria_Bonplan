@@ -7,7 +7,7 @@ export class ModelUser {
 
    prisma = new PrismaClient();
 
-   constructor(private req: NextApiRequest, private res: NextApiResponse) { };
+   constructor( private res: NextApiResponse) { };
 
 
    async getAll(): Promise<User[]> {

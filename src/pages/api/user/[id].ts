@@ -12,14 +12,14 @@ export default async function user(req: NextApiRequest, res: NextApiResponse) {
   try {
 
     if (method === "GET") {
-      let user = new ModelUser(req, res);
+      let user = new ModelUser(res);
       const response = await user.getOne(Id);
       res.send(response);
     }
 
     else if (method === "PUT") {
 
-      let user = new ModelUser(req, res);
+      let user = new ModelUser(res);
       const response = await user.update(Id, body);
       res.send(response);
 
@@ -27,7 +27,7 @@ export default async function user(req: NextApiRequest, res: NextApiResponse) {
 
     else if (method === 'DELETE') {
 
-      let user = new ModelUser(req, res);
+      let user = new ModelUser(res);
       const response = await user.delete(Id);
       res.send(response);
     }

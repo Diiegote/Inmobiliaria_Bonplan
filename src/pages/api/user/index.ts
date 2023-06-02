@@ -13,12 +13,12 @@ export default async function user(req: NextApiRequest, res: NextApiResponse) {
 
   try {
     if (method === 'GET') {
-      let user = new ModelUser(req, res);
+      let user = new ModelUser(res);
       const response = await user.getAll()
       res.json(response);
 
     } else if (method === 'POST') {
-      let user = new ModelUser(req, res);
+      let user = new ModelUser(res);
       const response = await user.add(body);
       res.json(response);
 
