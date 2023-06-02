@@ -1,0 +1,262 @@
+[
+   {
+     "id": 1,
+     "state": "Buenos Aires",
+     "cities": [
+       "La Plata",
+       "Mar del Plata",
+       "Bahía Blanca",
+       "San Nicolás de los Arroyos",
+       "Tandil"
+     ]
+   },
+   {
+     "id": 2,
+     "state": "Catamarca",
+     "cities": [
+       "San Fernando del Valle de Catamarca",
+       "Andalgalá",
+       "Belén",
+       "Fiambalá",
+       "Santa María"
+     ]
+   },
+   {
+     "id": 3,
+     "state": "Chaco",
+     "cities": [
+       "Resistencia",
+       "Barranqueras",
+       "Fontana",
+       "General San Martín",
+       "Presidencia Roque Sáenz Peña"
+     ]
+   },
+   {
+     "id": 4,
+     "state": "Chubut",
+     "cities": [
+       "Rawson",
+       "Comodoro Rivadavia",
+       "Trelew",
+       "Esquel",
+       "Puerto Madryn"
+     ]
+   },
+   {
+     "id": 5,
+     "state": "Córdoba",
+     "cities": [
+       "Córdoba",
+       "Villa María",
+       "Río Cuarto",
+       "San Francisco",
+       "Carlos Paz"
+     ]
+   },
+   {
+     "id": 6,
+     "state": "Corrientes",
+     "cities": [
+       "Corrientes",
+       "Goya",
+       "Mercedes",
+       "Curuzú Cuatiá",
+       "Esquina"
+     ]
+   },
+   {
+     "id": 7,
+     "state": "Entre Ríos",
+     "cities": [
+       "Paraná",
+       "Concepción del Uruguay",
+       "Gualeguaychú",
+       "Colón",
+       "Gualeguay"
+     ]
+   },
+   {
+     "id": 8,
+     "state": "Formosa",
+     "cities": [
+       "Formosa",
+       "Clorinda",
+       "Pirané",
+       "Las Lomitas",
+       "El Colorado"
+     ]
+   },
+   {
+     "id": 9,
+     "state": "Jujuy",
+     "cities": [
+       "San Salvador de Jujuy",
+       "Palpalá",
+       "San Pedro",
+       "La Quiaca",
+       "Libertador General San Martín"
+     ]
+   },
+   {
+     "id": 10,
+     "state": "La Pampa",
+     "cities": [
+       "Santa Rosa",
+       "General Pico",
+       "Toay",
+       "Realicó",
+       "Castex"
+     ]
+   },
+   {
+     "id": 11,
+     "state": "La Rioja",
+     "cities": [
+       "La Rioja",
+       "Chamical",
+       "Aimogasta",
+       "Villa Unión",
+       "Chepes"
+     ]
+   },
+   {
+     "id": 12,
+     "state": "Mendoza",
+     "cities": [
+       "Mendoza",
+       "San Rafael",
+       "Godoy Cruz"
+     ]
+   },
+   {
+       "id": 13,
+       "state": "Misiones",
+       "cities": [
+       "Posadas",
+       "Eldorado",
+       "Oberá",
+       "Aristóbulo del Valle",
+       "Puerto Rico"
+       ]
+       },
+       {
+       "id": 14,
+       "state": "Neuquén",
+       "cities": [
+       "Neuquén",
+       "San Martín de los Andes",
+       "Junín de los Andes",
+       "Zapala",
+       "Cutral Có"
+       ]
+       },
+       {
+       "id": 15,
+       "state": "Río Negro",
+       "cities": [
+       "Viedma",
+       "Bariloche",
+       "General Roca",
+       "Cipolletti",
+       "San Antonio Oeste"
+       ]
+       },
+       {
+       "id": 16,
+       "state": "Salta",
+       "cities": [
+       "Salta",
+       "San Ramón de la Nueva Orán",
+       "Cafayate",
+       "Tartagal",
+       "Metán"
+       ]
+       },
+       {
+       "id": 17,
+       "state": "San Juan",
+       "cities": [
+       "San Juan",
+       "Rawson",
+       "Chimbas",
+       "Santa Lucía",
+       "Pocito"
+       ]
+       },
+       {
+       "id": 18,
+       "state": "San Luis",
+       "cities": [
+       "San Luis",
+       "Villa Mercedes",
+       "Merlo",
+       "La Toma",
+       "Quines"
+       ]
+       },
+       {
+       "id": 19,
+       "state": "Santa Cruz",
+       "cities": [
+       "Río Gallegos",
+       "Caleta Olivia",
+       "Puerto Deseado",
+       "Pico Truncado",
+       "Las Heras"
+       ]
+       },
+       {
+       "id": 20,
+       "state": "Santa Fe",
+       "cities": [
+       "Rosario",
+       "Santa Fe",
+       "Venado Tuerto",
+       "Rafaela",
+       "Reconquista"
+       ]
+       },
+       {
+       "id": 21,
+       "state": "Santiago del Estero",
+       "cities": [
+       "Santiago del Estero",
+       "La Banda",
+       "Termas de Río Hondo",
+       "Fernández",
+       "Añatuya"
+       ]
+       },
+       {
+       "id": 22,
+       "state": "Tierra del Fuego",
+       "cities": [
+       "Ushuaia",
+       "Río Grande",
+       "Tolhuin",
+       "San Sebastián",
+       "Puerto Almanza"
+       ]
+       },
+       {
+       "id": 23,
+       "state": "Tucumán",
+       "cities": [
+       "San Miguel de Tucumán",
+       "Tafí Viejo",
+       "Banda del Río Salí"
+       ]
+       },
+       {
+        "id": 24,
+        "state": "Ciudad de Buenos Aires",
+        "cities": [
+          "Palermo",
+          "Recoleta",
+          "San Telmo",
+          "Puerto Madero",
+          "La Boca"
+        ]
+      }
+   ]

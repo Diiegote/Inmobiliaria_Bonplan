@@ -9,7 +9,6 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
    const { id } = req.query;
    const { method } = req;
    const Id = Number(id);
-
    try {
       switch (method) {
          case "GET":

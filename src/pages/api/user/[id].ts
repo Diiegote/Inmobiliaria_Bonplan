@@ -1,38 +1,45 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
-import { PrismaClient } from '@prisma/client'
-
-// type Data = {
-//   name: string
-// }
-const prisma = new PrismaClient({ log: ['query', 'info'] })
+import type { NextApiRequest, NextApiResponse } from 'next';
+import { PrismaClient } from '@prisma/client';
+import { ModelUser } from '@/model_service/user.model.service';
 
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  const { id } = req.query
-  const { method } = req
+
+export default async function user(req: NextApiRequest, res: NextApiResponse) {
+  const { id } = req.query;
+  const { method, body } = req;
   const Id = Number(id);
+
   try {
-    switch (method) {
-      case "GET":
-        const user = await prisma.user.findUnique({
-          where: { id: Id }
-        })
-       if(user){
-        return res.json(user)
-       } else {
-        res.status(400).json({message:"No se encontro el usuario"})
-       }
 
-      case "PUT":
-        return res.json({ mesagge: "Se edito correctamente" })
-
-      case "DELETE":
-        return res.json({ mesagge: "Se Borro correctamente" })
-
-      default:
-        res.status(404).json({ mesagge: "No se encontro la ruta" })
+    if (method === "GET") {
+      let user = new ModelUser(req, res);
+      const response = await user.getOne(Id);
+      res.send(response);
     }
-  } catch (error) {
-    console.log(error)
-  }
-}
+
+    else if (method === "PUT") {
+
+      let user = new ModelUser(req, res);
+      const response = await user.update(Id, body);
+      res.send(response);
+
+    }
+
+    else if (method === 'DELETE') {
+
+      let user = new ModelUser(req, res);
+      const response = await user.delete(Id);
+      res.send(response);
+    }
+
+    else {
+
+      res.status(404).json({ mesagge: "No se encontro la ruta" });
+    }
+
+  } catch (error: any) {
+    res.status(404).json(error.message);
+  };
+};
+
+
