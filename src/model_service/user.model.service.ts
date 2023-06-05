@@ -1,13 +1,13 @@
 import { PrismaClient } from '@prisma/client';
-import { User, UserAdd, UserUpdate } from '../interface/user.interface';
-import { NextApiRequest, NextApiResponse } from 'next';
+import { User, UserAdd, UserPassword, UserUpdate } from '../interface/user.interface';
+import { NextApiResponse } from 'next';
 
 
 export class ModelUser {
 
    prisma = new PrismaClient();
 
-   constructor( private res: NextApiResponse) { };
+   constructor(private res: NextApiResponse) { };
 
 
    async getAll(): Promise<User[]> {
@@ -28,6 +28,7 @@ export class ModelUser {
    };
 
    async add(data: UserAdd) {
+      
       try {
          const email = await this.prisma.user.findUnique({ where: { email: data.email } });
 
@@ -35,9 +36,13 @@ export class ModelUser {
 
             this.res.status(500).send('User already added') : Promise;
 
-         const user = await this.prisma.user.create({ data: { ...data } });
+         if (!data.email || !data.lastname || !data.name || !data.password  || !data.phone )
+            return this.res.status(500).send('the fields are required')
+      
 
-         return user;
+            const user = await this.prisma.user.create({ data: { ...data } });
+            return user;
+       
 
       } catch (error: any) {
          this.res.status(500).send(error.message);
@@ -51,13 +56,33 @@ export class ModelUser {
          const searchUser = await this.prisma.user.findUnique({ where: { id: id } });
          !searchUser ? this.res.status(500).send('User not found') : Promise;
 
-         if (!changes.name && !changes.lastname && !changes.password && !changes.phone) {
-            this.res.status(500).send('fields cannot be empty')
-         }
+         const user = await this.prisma.user.update({
+            where: { id: id },
+            data: {
+
+               name: changes.name ? changes.name : searchUser?.name,
+               lastname: changes.lastname ? changes.lastname : searchUser?.lastname,
+               password: changes.password ? changes.password : searchUser?.password,
+               phone: changes.phone ? changes.phone : searchUser?.phone
+            }
+         });
+         return user;
+
+      } catch (error: any) {
+         this.res.status(500).send(error.message);
+      };
+   };
+   
+   async updatepassword(id: number, changes: UserPassword) {
+
+      try {
+
+         const searchUser = await this.prisma.user.findUnique({ where: { id: id } });
+         !searchUser ? this.res.status(500).send('User not found') : Promise;
 
          const user = await this.prisma.user.update({
             where: { id: id },
-            data: { ...changes }
+            data: { superuser: changes.superuser }
          });
          return user;
 

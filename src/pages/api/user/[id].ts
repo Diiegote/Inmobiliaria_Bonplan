@@ -1,12 +1,10 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { PrismaClient } from '@prisma/client';
 import { ModelUser } from '@/model_service/user.model.service';
 
 
 
-export default async function user(req: NextApiRequest, res: NextApiResponse) {
-  const { id } = req.query;
-  const { method, body } = req;
+export default async function user({ method, body, query }: NextApiRequest, res: NextApiResponse) {
+  const { id } = query;
   const Id = Number(id);
 
   try {
@@ -34,7 +32,7 @@ export default async function user(req: NextApiRequest, res: NextApiResponse) {
 
     else {
 
-      res.status(404).json({ mesagge: "No se encontro la ruta" });
+      res.status(404).json({ mesagge: "Not Found" });
     }
 
   } catch (error: any) {

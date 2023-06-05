@@ -12,4 +12,6 @@ export interface User {
 
 export interface UserAdd extends Omit<User,'id'| 'created_at' | 'updatedAt'> {}
 
-export interface UserUpdate extends Omit<UserAdd,'email' | "superuser" > {}
+export interface UserUpdate extends Omit<UserAdd,'email'> {}
+
+export interface UserPassword extends Omit<UserUpdate,'name' | 'lastname' | 'password' | 'phone'> {}
