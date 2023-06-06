@@ -9,12 +9,11 @@ export class ModelUser {
 
    constructor(private res: NextApiResponse) { };
 
-
    async getAll(): Promise<User[]> {
-      const user = await this.prisma.user.findMany({
+      const users = await this.prisma.user.findMany({
          include: { contracts: true }
       });
-      return user;
+      return users;
    };
 
    async getOne(id: number) {
@@ -28,7 +27,7 @@ export class ModelUser {
    };
 
    async add(data: UserAdd) {
-      
+
       try {
          const email = await this.prisma.user.findUnique({ where: { email: data.email } });
 
@@ -36,13 +35,13 @@ export class ModelUser {
 
             this.res.status(500).send('User already added') : Promise;
 
-         if (!data.email || !data.lastname || !data.name || !data.password  || !data.phone )
+         if (!data.email || !data.lastname || !data.name || !data.password || !data.phone)
             return this.res.status(500).send('the fields are required')
-      
 
-            const user = await this.prisma.user.create({ data: { ...data } });
-            return user;
-       
+
+         const user = await this.prisma.user.create({ data: { ...data } });
+         return user;
+
 
       } catch (error: any) {
          this.res.status(500).send(error.message);
@@ -72,7 +71,7 @@ export class ModelUser {
          this.res.status(500).send(error.message);
       };
    };
-   
+
    async updatepassword(id: number, changes: UserPassword) {
 
       try {
