@@ -1,29 +1,27 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
-import { PrismaClient } from '@prisma/client'
-
-//  type Data = {
-//    name: string
-//  }
-const prisma = new PrismaClient({ log: ['query', 'info'] })
+import type { NextApiRequest, NextApiResponse } from 'next';
+import { ModelUser } from '@/model_service/user.model.service';
 
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 
-  const { method } = req
+
+export default async function user({body,method}: NextApiRequest, res: NextApiResponse) {
 
   try {
-    switch (method) {
-      case "GET":
-        const user = await prisma.user.findMany()
-        res.json(user)
+    if (method === 'GET') {
+      let user = new ModelUser(res);
+      const response = await user.getAll()
+      res.send(response);
 
-      case "POST":
-        return res.json({ mesagge: "Se Creo correctamente" })
+    } else if (method === 'POST') {
+      let user = new ModelUser(res);
+      const response = await user.add(body);
+      res.send({Message:"User Created",response});
 
-      default:
-        res.status(404).json({ mesagge: "No se encontro la ruta" })
+    } else {
+      res.status(404).send("Not Found");
     }
-  } catch (error) {
-    console.log(error)
-  }
+
+  } catch (e) {
+    res.status(500).send("Internal Server Error");
+  };
 }

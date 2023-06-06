@@ -1,8 +1,7 @@
-import { PrismaClient } from "@prisma/client";
+import {Prisma} from '../../../utils/prismaclient';
 import { NextApiRequest, NextApiResponse } from "next";
 
 
-const prisma = new PrismaClient();
 
 export default async function state(req: NextApiRequest, res: NextApiResponse) {
    const { method } = req;
@@ -10,7 +9,7 @@ export default async function state(req: NextApiRequest, res: NextApiResponse) {
    try {
       switch (method) {
          case "GET":
-            const response = await prisma.state.findMany()
+            const response = await Prisma.state.findMany()
             return res.json(response)
 
          case "POST":
