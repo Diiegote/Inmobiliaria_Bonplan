@@ -29,7 +29,8 @@ yarn-error.log*
 .env*.local
 .env
 /config
-
+completo.sql
+cities-arg.json
 # vercel
 .vercel
 
