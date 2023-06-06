@@ -11,7 +11,7 @@ export default async function changePasswod({ method, body, query }: NextApiRequ
 
       if (method === "PUT") {
         let user = new ModelUser(res);
-        const response = await user.updatepassword(Id,body);
+        const response = await user.updatesuperuser(Id,body);
         res.send(response);
       }
       else {

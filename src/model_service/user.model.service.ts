@@ -1,11 +1,11 @@
-import { PrismaClient } from '@prisma/client';
-import { User, UserAdd, UserPassword, UserUpdate } from '../interface/user.interface';
+import { SuperUser, User, UserAdd, UserUpdate } from '../interface/user.interface';
 import { NextApiResponse } from 'next';
+import {Prisma} from '../utils/prismaclient';
 
 
 export class ModelUser {
 
-   prisma = new PrismaClient();
+   prisma = Prisma
 
    constructor(private res: NextApiResponse) { };
 
@@ -72,7 +72,7 @@ export class ModelUser {
       };
    };
 
-   async updatepassword(id: number, changes: UserPassword) {
+   async updatesuperuser(id: number, changes: SuperUser) {
 
       try {
 
