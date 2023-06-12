@@ -9,7 +9,7 @@ export default async function user({body,method}: NextApiRequest, res: NextApiRe
   try {
     if (method === 'GET') {
       let user = new ModelUser(res);
-      const response = await user.getAll()
+      const response = await user.getAll();
       res.send(response);
 
     } else if (method === 'POST') {
