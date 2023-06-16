@@ -1,5 +1,5 @@
 import { SuperUser, User, UserAdd, UserUpdate } from '../interface/user.interface';
-import { NextApiRequest, NextApiResponse } from 'next';
+import { NextApiResponse } from 'next';
 import { Prisma } from '../utils/prismaclient';
 
 
