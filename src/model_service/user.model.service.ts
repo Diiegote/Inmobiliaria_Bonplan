@@ -1,28 +1,40 @@
 import { SuperUser, User, UserAdd, UserUpdate } from '../interface/user.interface';
 import { NextApiResponse } from 'next';
-import {Prisma} from '../utils/prismaclient';
+import { Prisma } from '../utils/prismaclient';
 
 
 export class ModelUser {
 
    prisma = Prisma
 
-   constructor(private res: NextApiResponse) { };
+   constructor( private res: NextApiResponse) { };
 
-   async getAll(): Promise<User[]> {
-      const users = await this.prisma.user.findMany({
-         include: { contracts: true }
-      });
-      return users;
+   async getAll():Promise<User[]> {
+      try {
+         const users = await this.prisma.user.findMany({
+            include: { contracts: true }
+         });
+         return users;
+
+      } catch (error: any) {
+         this.res.status(500).send(error.message);
+      }
+      return this.getAll()
    };
 
    async getOne(id: number) {
 
-      const user = await this.prisma.user.findUnique({ where: { id: id }, include: { contracts: true } });
+      try {
+         const user = await this.prisma.user.findUnique({ where: { id: id }, include: { contracts: true } });
 
-      !user ? this.res.status(500).send('User not found') : Promise;
+         !user ? this.res.status(500).send('User not found') : Promise;
 
-      return user;
+         return user;
+
+      } catch (error: any) {
+
+         this.res.status(500).send(error.message);
+      }
 
    };
 
@@ -92,13 +104,18 @@ export class ModelUser {
 
    async delete(id: number) {
 
-      const user = await this.prisma.user.findUnique({ where: { id: id }, include: { contracts: true } });
+      try {
+         const user = await this.prisma.user.findUnique({ where: { id: id }, include: { contracts: true } });
 
-      !user ? this.res.status(500).send('User not found') : Promise;
+         !user ? this.res.status(500).send('User not found') : Promise;
 
-      const deleteUser = await this.prisma.user.delete({ where: { id: id } });
+         const deleteUser = await this.prisma.user.delete({ where: { id: id } });
 
-      return 'User deleted'
+         return 'User deleted'
+
+      } catch (error: any) {
+         this.res.status(500).send(error.message);
+      }
 
    };
 };
