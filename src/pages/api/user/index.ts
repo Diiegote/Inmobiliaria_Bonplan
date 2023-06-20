@@ -15,7 +15,7 @@ export default async function user({body,method}: NextApiRequest, res: NextApiRe
     } else if (method === 'POST') {
       let user = new ModelUser(res);
       const response = await user.add(body);
-      res.send({Message:"User Created",response});
+      res.send(response);
 
     } else {
       res.status(404).send("Not Found");
